@@ -8,6 +8,7 @@ from myapp import views
 urlpatterns = [
     # Admin Panel
     path('admin/', admin.site.urls),
+    path('', include('myapp.urls')),
 
     # Main Pages
     path('', views.home, name='home'),
