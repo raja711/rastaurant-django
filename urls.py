@@ -9,9 +9,7 @@ urlpatterns = [
     # Admin Panel
     path('admin/', admin.site.urls),
     path('', include('myapp.urls')),
-
-    # Main Pages
-    path('', views.home, name='home'),
+    path('home/', views.home, name='home'),
     path('index/', views.index, name='index'),
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
