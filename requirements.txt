@@ -2,4 +2,4 @@ Django
 sqlparse
 asgiref
 packaging
-mysql-connector-python
+PyMySQL
