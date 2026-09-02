@@ -117,15 +117,5 @@ USE_TZ = True
 import os
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'myapp/static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-
-# Django 4.2+ aur Whitenoise ke liye updated storage setting
-STORAGES = {
-    "default": {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
-    },
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-}
