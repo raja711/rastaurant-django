@@ -1,0 +1,6 @@
+.idea/
+Git/
+venv/
+*.sqlite3
+*.exe
+__pycache__/

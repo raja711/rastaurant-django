@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    {% load static %}
+    <title>S-Restaurant</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- Favicon -->
+    <link href="{% static 'img/favicon.ico' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css' %}" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+    <style>
+        .menu-category {
+            margin-top: 40px;
+        }
+
+        .menu-category h2 {
+            border-bottom: 2px solid #ff914d;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            color: #ff5c00;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+        }
+
+        .menu-item img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .menu-details {
+            flex: 1;
+        }
+
+        .menu-details h3 {
+            display: flex;
+            justify-content: space-between;
+            margin: 0;
+            font-size: 1.1em;
+        }
+
+        .menu-details p {
+            margin: 5px 0 0;
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        @media (max-width: 600px) {
+            .menu-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .menu-details h3 {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .menu-details h3 span {
+                margin-top: 5px;
+                font-weight: normal;
+                color: #555;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-xxl bg-white p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+        <!-- Navbar & Hero Start -->
+        <div class="container-xxl position-relative p-0">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
+                <a href="" class="navbar-brand p-0">
+                    <h1 class="text-primary m-0"><i class="fa fa-utensils me-3"></i>S-Restaurant</h1>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto py-0 pe-4">
+                        <a href="../index" class="nav-item nav-link active">Home</a>
+                        <a href="../about" class="nav-item nav-link">About</a>
+                        <a href="../service" class="nav-item nav-link">Service</a>
+                        <a href="../menu" class="nav-item nav-link">Menu</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                            <div class="dropdown-menu m-0">
+                                <a href="../team" class="dropdown-item">Our Team</a>
+                                <a href="../testimonial" class="dropdown-item">Testimonial</a>
+                            </div>
+                        </div>
+                        <a href="../contact" class="nav-item nav-link">Contact</a>
+                    </div>
+                    <a href="../booking" class="btn btn-primary py-2 px-4">Book A Table</a>
+                </div>
+            </nav>
+
+            <div class="container-xxl py-5 bg-dark hero-header mb-5">
+                <div class="container py-5">
+                    <div class="row g-5">
+                        <div class="col-lg-3 col-md-6">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Navbar & Hero End -->
+
+        <!-- Menu Start -->
+        <div class="container py-4">
+            <header style="text-align: center; background-color: #ff914d; color: white; padding: 20px 0; border-radius: 12px;">
+                <h1>Menu</h1>
+            </header>
+
+            <section class="menu-category">
+                <h2>Starters</h2>
+                <div class="menu-item">
+                    <img src="{% static 'img/f1.jpg' %}" alt="Veg Spring Rolls" />
+                    <div class="menu-details">
+                        <h3>Veg Spring Rolls <span>₹120</span></h3>
+                        <p>Crispy rolls stuffed with fresh veggies.</p>
+                        <a href="../order">
+                            <button style="float: right; font-size:20px;color:red;background-color:skyblue;padding:5px;border:1px solid blue;border-radius:5px;margin-block:15px;">Order now</button>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="{% static 'img/f2.jpg' %}" alt="Chicken Tikka" />
+                    <div class="menu-details">
+                        <h3>Chicken Tikka <span>₹180</span></h3>
+                        <p>Marinated chicken grilled to perfection.</p>
+                        <a href="../order">
+                            <button style="float: right; font-size:20px;color:red;background-color:skyblue;padding:5px;border:1px solid blue;border-radius:5px;margin-block:15px;">Order now</button>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="menu-category">
+                <h2>Main Course</h2>
+                <div class="menu-item">
+                    <img src="{% static 'img/f3.jpg' %}" alt="Paneer Butter Masala" />
+                    <div class="menu-details">
+                        <h3>Paneer Butter Masala <span>₹220</span></h3>
+                        <p>Soft paneer cubes in creamy tomato gravy.</p>
+                        <a href="../order">
+                            <button style="float: right; font-size:20px;color:red;background-color:skyblue;padding:5px;border:1px solid blue;border-radius:5px;margin-block:15px;">Order now</button>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="{% static 'img/f4.jpg' %}" alt="Chicken Biryani" />
+                    <div class="menu-details">
+                        <h3>Chicken Biryani <span>₹250</span></h3>
+                        <p>Fragrant basmati rice with spiced chicken.</p>
+                        <a href="../order">
+                            <button style="float: right; font-size:20px;color:red;background-color:skyblue;padding:5px;border:1px solid blue;border-radius:5px;margin-block:15px;">Order now</button>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="menu-category">
+                <h2>Desserts</h2>
+                <div class="menu-item">
+                    <img src="{% static 'img/f5.jpg' %}" alt="Gulab Jamun" />
+                    <div class="menu-details">
+                        <h3>Gulab Jamun <span>₹90</span></h3>
+                        <p>Sweet dumplings soaked in rose syrup.</p>
+                        <a href="../order">
+                            <button style="float: right; font-size:20px;color:red;background-color:skyblue;padding:5px;border:1px solid blue;border-radius:5px;margin-block:15px;">Order now</button>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="{% static 'img/f6.jpg' %}" alt="Ice Cream Sundae" />
+                    <div class="menu-details">
+                        <h3>Ice Cream Sundae <span>₹110</span></h3>
+                        <p>Vanilla & chocolate with toppings.</p>
+                        <a href="../order">
+                            <button style="float: right; font-size:20px;color:red;background-color:skyblue;padding:5px;border:1px solid blue;border-radius:5px;margin-block:15px;">Order now</button>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- Menu End -->
+
+        <!-- Footer Start -->
+        <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+            <div class="container py-5">
+                <div class="row g-5">
+                    <div class="col-lg-3 col-md-6">
+                        <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Company</h4>
+                        <a class="btn btn-link" href="../about">About Us</a>
+                        <a class="btn btn-link" href="../contact">Contact Us</a>
+                        <a class="btn btn-link" href="">Privacy Policy</a>
+                        <a class="btn btn-link" href="">Terms & Condition</a>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Contact</h4>
+                        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>prasad polytechnic,jaunpur</p>
+                        <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+918114031792</p>
+                        <p class="mb-2"><i class="fa fa-envelope me-3"></i>shubham@example.com</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Opening</h4>
+                        <h5 class="text-light fw-normal">Monday - Saturday</h5>
+                        <p>09AM - 09PM</p>
+                        <h5 class="text-light fw-normal">Sunday</h5>
+                        <p>10AM - 08PM</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Newsletter</h4>
+                        <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
+                        <div class="position-relative mx-auto" style="max-width: 400px;">
+                            <a href="../sign">
+                                <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'lib/wow/wow.min.js' %}"></script>
+    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'lib/waypoints/waypoints.min.js' %}"></script>
+    <script src="{% static 'lib/counterup/counterup.min.js' %}"></script>
+    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'lib/tempusdominus/js/moment.min.js' %}"></script>
+    <script src="{% static 'lib/tempusdominus/js/moment-timezone.min.js' %}"></script>
+    <script src="{% static 'lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

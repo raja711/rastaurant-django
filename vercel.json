@@ -2,12 +2,17 @@
   "version": 2,
   "builds": [
     {
+<<<<<<< HEAD
       "src": "rastaurant/wsgi.py",
+=======
+      "src": "wsgi.py",
+>>>>>>> 545825f95ca76ddbea56f6842e04aafd1ed77413
       "use": "@vercel/python"
     }
   ],
   "routes": [
     {
+<<<<<<< HEAD
       "src": "/static/(.*)",
       "dest": "/static/$1"
     },
@@ -17,3 +22,10 @@
     }
   ]
 }
+=======
+      "src": "/(.*)",
+      "dest": "wsgi.py"
+    }
+  ]
+}
+>>>>>>> 545825f95ca76ddbea56f6842e04aafd1ed77413
