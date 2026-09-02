@@ -2,30 +2,24 @@
   "version": 2,
   "builds": [
     {
-<<<<<<< HEAD
       "src": "rastaurant/wsgi.py",
-=======
-      "src": "wsgi.py",
->>>>>>> 545825f95ca76ddbea56f6842e04aafd1ed77413
-      "use": "@vercel/python"
+      "use": "@vercel/python",
+      "config": { "maxLambdaSize": "15mb" }
+    },
+    {
+      "src": "build_files.sh",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "staticfiles_build" }
     }
   ],
   "routes": [
     {
-<<<<<<< HEAD
       "src": "/static/(.*)",
       "dest": "/static/$1"
     },
     {
-      "src": "/(.*)",
+      "src": "(.*)",
       "dest": "rastaurant/wsgi.py"
     }
   ]
 }
-=======
-      "src": "/(.*)",
-      "dest": "wsgi.py"
-    }
-  ]
-}
->>>>>>> 545825f95ca76ddbea56f6842e04aafd1ed77413
