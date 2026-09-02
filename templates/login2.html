@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .login-card {
+            background-color: #f8f8f8;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            padding: 40px 30px 30px 30px;
+            width: 340px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.02);
+            text-align: center;
+        }
+
+        .login-card h2 {
+            color: #333333;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px 12px;
+            font-size: 14px;
+            color: #333;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            outline: none;
+            background-color: #ffffff;
+        }
+
+        .form-control::placeholder {
+            color: #888888;
+        }
+
+        .form-control:focus {
+            border-color: #999999;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 10px;
+            background-color: #dddddd;
+            color: #333333;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-top: 5px;
+            transition: background-color 0.2s;
+        }
+
+        .btn-submit:hover {
+            background-color: #d0d0d0;
+        }
+
+        .signup-text {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #666666;
+        }
+
+        .signup-text a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .signup-text a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-card">
+        <h2>Login</h2>
+
+        <form method="POST" action="">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <input type="text" name="username" class="form-control" placeholder="Username" required>
+            </div>
+
+            <div class="form-group">
+                <input type="password" name="password" class="form-control" placeholder="Password" required>
+            </div>
+
+            <button type="submit" class="btn-submit">Log In</button>
+        </form>
+
+        <p class="signup-text">
+            Don't have an account? <a href="#">Sign Up</a>
+        </p>
+    </div>
+
+</body>
+</html>

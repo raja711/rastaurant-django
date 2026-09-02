@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    <style>
+        /* Screen Centering */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* White Card Box */
+        .feedback-card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 28px;
+            width: 320px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            box-sizing: border-box;
+        }
+
+        /* Title */
+        .feedback-card h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #333333;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* Top Action Buttons Group */
+        .tab-group {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 8px 0;
+            font-size: 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+            background-color: #d8d8d8;
+            border: 1px solid #b5b5b5;
+            color: #222222;
+        }
+
+        /* Selected Active Tab (Exact Thick Dark Border) */
+        .tab-btn.active {
+            background-color: #cccccc;
+            border: 2px solid #111111;
+            font-weight: bold;
+        }
+
+        /* Textarea Label */
+        .input-label {
+            display: block;
+            font-size: 12px;
+            color: #444444;
+            margin-bottom: 6px;
+        }
+
+        /* Textarea Input Styling */
+        textarea {
+            width: 100%;
+            height: 110px;
+            padding: 8px 10px;
+            border: 1px solid #c0c0c0;
+            border-radius: 3px;
+            box-sizing: border-box;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 13px;
+            resize: none;
+            outline: none;
+            color: #333333;
+        }
+
+        textarea::placeholder {
+            color: #777777;
+        }
+
+        /* Submit Button Styling */
+        .btn-submit {
+            width: 100%;
+            padding: 9px;
+            margin-top: 20px;
+            background-color: #d8d8d8;
+            border: 1px solid #b5b5b5;
+            border-radius: 3px;
+            color: #222222;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .btn-submit:hover {
+            background-color: #cccccc;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="feedback-card">
+        <h2>Feedback</h2>
+
+        <!-- Action Buttons -->
+        <div class="tab-group">
+            <button type="button" class="tab-btn active" id="addBtn" onclick="switchTab('add')">Add Feedback</button>
+            <button type="button" class="tab-btn" id="editBtn" onclick="switchTab('edit')">Edit Feedback</button>
+        </div>
+
+        <!-- Django Form -->
+        <form method="POST" action="">
+            {% csrf_token %}
+
+            <label class="input-label">Your Feedback:</label>
+            <textarea name="content" id="feedbackArea" placeholder="Write your feedback here..." required>{% if existing_feedback %}{{ existing_feedback }}{% endif %}</textarea>
+
+            <button type="submit" class="btn-submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        const savedText = "{% if existing_feedback %}{{ existing_feedback|escapejs }}{% endif %}";
+        const addBtn = document.getElementById('addBtn');
+        const editBtn = document.getElementById('editBtn');
+        const textarea = document.getElementById('feedbackArea');
+
+        function switchTab(mode) {
+            if (mode === 'add') {
+                addBtn.classList.add('active');
+                editBtn.classList.remove('active');
+                textarea.value = '';
+            } else if (mode === 'edit') {
+                editBtn.classList.add('active');
+                addBtn.classList.remove('active');
+                if (savedText) {
+                    textarea.value = savedText;
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
