@@ -5,8 +5,7 @@
       "src": "rastaurant/wsgi.py",
       "use": "@vercel/python",
       "config": {
-        "maxLambdaSize": "15mb",
-        "includeFiles": []
+        "excludeFiles": "{venv/**,.venv/**,db.sqlite3,db.sqlite,staticfiles/**}"
       }
     },
     {
